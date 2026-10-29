@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIX Linux Resource Monitor - Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-bottom: 2px solid #3b82f6;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #60a5fa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status-badge {
+            background: #10b981;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+        .stat-card .val {
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+        .stat-card .desc {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+        .main-panel {
+            background: #1e293b;
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #334155;
+            margin-bottom: 30px;
+        }
+        .main-panel h2 {
+            margin-top: 0;
+            color: #f8fafc;
+            font-size: 18px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+        .tools-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn {
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .btn-green { background: #059669; }
+        .btn-green:hover { background: #047857; }
+        .btn-purple { background: #7c3aed; }
+        .btn-purple:hover { background: #6d28d9; }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 13px;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>⚡ UnixSys Monitor - Live Server Dashboard</h1>
+    <span class="status-badge">● SWS SERVER ONLINE (PORT 8080)</span>
+</header>
+
+<div class="container">
+    <div class="grid-stats">
+        <div class="stat-card">
+            <h3>Tải Hệ Thống (CPU)</h3>
+            <div class="val">0.12, 0.08</div>
+            <div class="desc">1.4% CPU Utilization</div>
+        </div>
+        <div class="stat-card">
+            <h3>Bộ Nhớ RAM</h3>
+            <div class="val">1.8 / 7.6 GB</div>
+            <div class="desc">23.6% Ram Allocated</div>
+        </div>
+        <div class="stat-card">
+            <h3>Ổ Đĩa File System</h3>
+            <div class="val">42.1 GB Free</div>
+            <div class="desc">Storage /dev/root (31%)</div>
+        </div>
+        <div class="stat-card">
+            <h3>Tiến Trình Đang Chạy</h3>
+            <div class="val">118 Procs</div>
+            <div class="desc">Daemon Mode: SWS Active</div>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <h2>🛠 BẢNG ĐIỀU KHIỂN & CÔNG CỤ TRUY VẤN HỆ THỐNG TRỰC TUYẾN</h2>
+        <p>Hệ thống giám sát máy chủ được phát triển hoàn toàn trên nền tảng máy chủ web C chuyên biệt (SWS HTTP/1.0 Server). Cho phép theo dõi tải phần cứng, kiểm tra tiến trình theo thời gian thực và quản lý tài liệu lưu trữ thông qua cơ chế CGI Dynamic Scripting và File Indexing.</p>
+        
+        <div class="tools-nav">
+            <a class="btn btn-green" href="/cgi-bin/sysinfo.cgi">📊 Xem Chi Tiết Tài Nguyên Realtime (CGI)</a>
+            <a class="btn btn-purple" href="/cgi-bin/proc.cgi">⚙️ Danh Sách Tiến Trình Hệ Thống (CGI)</a>
+            <a class="btn" href="/docs/">📁 Kho Lưu Trữ Tài Liệu & Nhật Ký (File Indexing)</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>UnixSys Monitor v1.0 • Powered by SWS C-Engine (RFC 1945 & RFC 3875)</p>
+    <p>Sinh viên thực hiện: Nguyễn Hoàng Lực (23IT151) | Nguyễn Xuân Lam | Nguyễn Đăng Luân | Võ Thị Quỳnh Linh</p>
+</footer>
+
+</body>
+</html>

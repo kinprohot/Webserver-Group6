@@ -1,0 +1,1 @@
+RFC 3875 The Common Gateway Interface (CGI) Version 1.1 specification.

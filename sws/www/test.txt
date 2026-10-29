@@ -1,0 +1,8 @@
+This is a static text file served by sws web server.
+Project: Advanced Programming in the UNIX Environment (CS631)
+Team:
+1. Nguyen Hoang Luc (23IT151)
+2. Nguyen Xuan Lam
+3. Nguyen Dang Luan
+4. Vo Thi Quynh Linh
+HTTP/1.0 RFC1945 Compliant.
